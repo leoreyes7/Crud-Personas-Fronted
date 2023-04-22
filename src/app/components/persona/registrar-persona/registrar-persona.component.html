@@ -1,0 +1,76 @@
+<div class="col-md-6 offset-md-3">
+    <h3 class="text-center">Registrar Persona</h3>
+    <form (ngSubmit) = "onSubmit()" #personaForm = "ngForm">
+        <div class="form-group">
+            <label>Nombre : </label>
+            <input type="text" name="nombre" id="nombre" 
+            [(ngModel)]="persona.nombre"
+            #nombre = "ngModel"
+            required
+            minlength="3"
+            maxlength="20"
+            placeholder="Ingrese su nombre "
+            class="form-control">
+            <div class="alert alert-danger" *ngIf= "nombre.invalid && (nombre.dirty || nombre.touched)">
+                <div *ngIf = "nombre.errors?.['required']">
+                  Digite su nombre por favor
+                </div>
+                <div *ngIf = "nombre.errors?.['minlength']">
+                  El nombre tiene que contener como minimo 3 caracteres
+                </div>
+                <div *ngIf = "nombre.errors?.['maxlength']">
+                  El nombre tiene que tener como maximo 10 caracteres
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Apellido : </label>
+            <input type="text" name="apellido" id="apellido" 
+            [(ngModel)]="persona.apellido"
+            #apellido = "ngModel"
+            required
+            minlength="3"
+            max="20"
+            placeholder="Ingrese su apellido"
+            class="form-control">
+            <div class="alert alert-danger" *ngIf= "apellido.invalid && (apellido.dirty || apellido.touched)">
+                <div *ngIf = "apellido.errors?.['required']">
+                  Digite su apellido por favor
+                </div>
+                <div *ngIf = "apellido.errors?.['minlength']">
+                  El apellido tiene que contener como minimo 3 caracteres
+                </div>
+                <div *ngIf = "apellido.errors?.['maxlength']">
+                  El apellido tiene que tener como maximo 10 caracteres
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Edad : </label>
+            <input type="number" name="edad" id="edad"
+            [(ngModel)]="persona.edad"
+            required
+            placeholder="Ingrese su edad" 
+            class="form-control">
+        </div>
+        <div class="form-group">
+            <label>Correo : </label>
+            <input type="email" name="correo" id="correo" 
+            [(ngModel)]="persona.correo"
+            required
+            placeholder="Ingrese su correo"
+            pattern ="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}"
+            #correo = "ngModel"
+            class="form-control">
+            <div class="alert alert-danger" *ngIf= "correo.invalid && (correo.dirty || correo.touched)">
+                <div *ngIf = "correo.errors?.['required']">
+                  Digite su correo por favor
+                </div>
+                <div *ngIf = "correo.errors?.['pattern']">
+                  Por favor digite el correo con el siguiente formato : usuario@correo.com
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-success" [disabled]= "!personaForm.form.valid">Guardar</button>
+    </form>
+</div>

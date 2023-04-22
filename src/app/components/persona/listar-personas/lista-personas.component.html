@@ -1,0 +1,25 @@
+<h2 class="text-center">Lista Personas</h2>
+<table class="table table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Edad</th>
+            <th>Correo</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let persona of personas">
+            <td>{{persona.nombre}}</td>
+            <td>{{persona.apellido}}</td>
+            <td>{{persona.edad}}</td>
+            <td>{{persona.correo}}</td>
+            <td>
+                <button (click)="actualizarPersona(persona.id)" class="btn btn-info">Actualizar</button>
+                <button (click)="eliminarPersona(persona.id)" class="btn btn-danger" style="margin-left : 10px;">Eliminar</button>
+            </td>
+        </tr>
+    </tbody>
+
+</table>
